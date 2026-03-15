@@ -4,7 +4,12 @@ import {
   adicionarClienteTabela,
 } from "./cliente.view.js";
 
-import { salvarCliente } from "./cliente.model.js";
+import { buscarClientes, salvarCliente } from "./cliente.model.js";
+
+async function handleListarClientes() {
+  const clientes = await buscarClientes();
+  clientes.forEach((cliente) => adicionarClienteTabela(cliente));
+}
 
 clienteForm.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -36,3 +41,5 @@ clienteForm.addEventListener("submit", (event) => {
 
   clienteForm.reset();
 });
+
+document.addEventListener("DOMContentLoaded", handleListarClientes);

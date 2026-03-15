@@ -1,5 +1,6 @@
 import {
   clienteForm,
+  clientesTableData,
   mostrarMensagem,
   adicionarClienteTabela,
 } from "./cliente.view.js";
@@ -8,10 +9,12 @@ import { buscarClientes, salvarCliente } from "./cliente.model.js";
 
 async function handleListarClientes() {
   const clientes = await buscarClientes();
+
+  clientesTableData.innerText = "";
   clientes.forEach((cliente) => adicionarClienteTabela(cliente));
 }
 
-clienteForm.addEventListener("submit", (event) => {
+async function handleCadastrarCliente(event) {
   event.preventDefault();
 
   const cliente = {
@@ -35,11 +38,12 @@ clienteForm.addEventListener("submit", (event) => {
     return;
   }
 
-  salvarCliente(cliente);
-  adicionarClienteTabela(cliente);
-  mostrarMensagem("Cliente cadastrado com sucesso.", "success");
+  const message = await salvarCliente(cliente);
+  mostrarMensagem(message.detail, "success");
 
   clienteForm.reset();
-});
+  await handleListarClientes();
+}
 
+clienteForm.addEventListener("submit", handleCadastrarCliente);
 document.addEventListener("DOMContentLoaded", handleListarClientes);

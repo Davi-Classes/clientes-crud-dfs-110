@@ -1,5 +1,7 @@
-const clientesTable = document.getElementById("clientes-table");
 export const clienteForm = document.getElementById("cliente-form");
+
+const clientesTable = document.getElementById("clientes-table");
+export const clientesTableData = clientesTable.querySelector("tbody");
 
 export function mostrarMensagem(text, type) {
   const mensagemParagraph = document.getElementById("mensagem");
@@ -10,10 +12,8 @@ export function mostrarMensagem(text, type) {
 }
 
 export function adicionarClienteTabela(cliente) {
-  const tableData = clientesTable.querySelector("tbody");
-
   const tableRow = document.createElement("tr");
-  tableData.appendChild(tableRow);
+  clientesTableData.appendChild(tableRow);
 
   const nomeCell = document.createElement("td");
   nomeCell.innerText = cliente.nome;

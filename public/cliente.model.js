@@ -1,4 +1,3 @@
-const clientes = [];
 const API_URL = "https://clienteapi.onrender.com";
 
 export async function buscarClientes() {
@@ -6,6 +5,14 @@ export async function buscarClientes() {
   return res.json();
 }
 
-export function salvarCliente(cliente) {
-  clientes.push(cliente);
+export async function salvarCliente(cliente) {
+  const res = await fetch(`${API_URL}/clientes`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(cliente),
+  });
+
+  return res.json();
 }

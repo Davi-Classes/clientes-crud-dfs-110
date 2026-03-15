@@ -12,8 +12,7 @@ clienteForm.addEventListener("submit", (event) => {
   const cliente = {
     nome: clienteForm.nome.value.trim(),
     email: clienteForm.email.value.trim(),
-    telefone: clienteForm.telefone.value.trim(),
-    dataNascimento: clienteForm.dataNascimento.value,
+    endereco: clienteForm.endereco.value.trim(),
   };
 
   if (cliente.nome === "") {
@@ -26,17 +25,10 @@ clienteForm.addEventListener("submit", (event) => {
     return;
   }
 
-  if (cliente.telefone === "") {
-    mostrarMensagem("O campo telefone é obrigatório.", "error");
+  if (cliente.endereco === "") {
+    mostrarMensagem("O campo endereco é obrigatório.", "error");
     return;
   }
-
-  if (cliente.dataNascimento === "") {
-    mostrarMensagem("O campo data de nascimento é obrigatório.", "error");
-    return;
-  }
-
-  cliente.dataNascimento = new Date(cliente.dataNascimento);
 
   salvarCliente(cliente);
   adicionarClienteTabela(cliente);

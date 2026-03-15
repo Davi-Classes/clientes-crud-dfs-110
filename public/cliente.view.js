@@ -23,12 +23,7 @@ export function adicionarClienteTabela(cliente) {
   emailCell.innerText = cliente.email;
   tableRow.appendChild(emailCell);
 
-  const telCell = document.createElement("td");
-  telCell.innerText = cliente.telefone;
-  tableRow.appendChild(telCell);
-
-  const dataNascimentoCell = document.createElement("td");
-  dataNascimentoCell.innerText =
-    cliente.dataNascimento.toLocaleDateString("pt-BR");
-  tableRow.appendChild(dataNascimentoCell);
+  const enderecoCell = document.createElement("td");
+  enderecoCell.innerText = cliente.endereco;
+  tableRow.appendChild(enderecoCell);
 }

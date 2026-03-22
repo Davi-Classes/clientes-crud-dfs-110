@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clientes - Novo</title>
+  </head>
+  <body>
+    <h1>Cadastrar Cliente</h1>
+
+    <form id="cliente-form">
+      <div>
+        <label for="nome">Nome</label>
+        <input type="text" name="nome" id="nome" />
+      </div>
+
+      <div>
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" />
+      </div>
+
+      <div>
+        <label for="endereco">Endereço</label>
+        <input type="text" name="endereco" id="endereco" />
+      </div>
+
+      <a href="/"><button type="button">Voltar</button></a>
+      <button type="submit">Cadastrar</button>
+    </form>
+
+    <p id="mensagem"></p>
+
+    <script type="module" src="/public/scripts/create.js"></script>
+  </body>
+</html>

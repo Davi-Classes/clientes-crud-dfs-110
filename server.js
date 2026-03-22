@@ -16,6 +16,11 @@ app.get("/", async (_, res) => {
   res.sendFile(indexPage);
 });
 
+app.get("/novo", async (_, res) => {
+  const createPage = path.join(pages, "create.html");
+  res.sendFile(createPage);
+});
+
 app.listen(8080, "0.0.0.0", () =>
   console.log("Server is running at http://localhost:8080/"),
 );

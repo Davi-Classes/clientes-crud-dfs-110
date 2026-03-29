@@ -33,7 +33,7 @@ export function renderClienteRow(cliente, handleExcluir) {
   enderecoCell.innerText = cliente.endereco;
   tableRow.appendChild(enderecoCell);
 
-  const actionsCell = createActionsCell(async () => {
+  const actionsCell = createActionsCell(cliente, async () => {
     const deveRemoverLinha = await handleExcluir(cliente);
     if (deveRemoverLinha) tableRow.remove();
   });
@@ -41,8 +41,9 @@ export function renderClienteRow(cliente, handleExcluir) {
   tableRow.appendChild(actionsCell);
 }
 
-function createActionsCell(handleExcluir) {
+function createActionsCell(cliente, handleExcluir) {
   const actionsCell = document.createElement("td");
+  actionsCell.classList.add("td-actions");
 
   const deleteButton = document.createElement("button");
 
@@ -51,8 +52,29 @@ function createActionsCell(handleExcluir) {
 
   deleteButton.appendChild(trashIcon);
   deleteButton.classList.add("btn", "btn-danger");
-  actionsCell.appendChild(deleteButton);
 
+  actionsCell.appendChild(deleteButton);
   deleteButton.addEventListener("click", handleExcluir);
+
+  const editButton = document.createElement("a");
+  editButton.href = `${cliente.id}/editar`;
+
+  const pencilIcon = document.createElement("ion-icon");
+  pencilIcon.name = "pencil";
+
+  editButton.appendChild(pencilIcon);
+  editButton.classList.add("btn", "btn-secondary");
+
+  actionsCell.appendChild(editButton);
+
   return actionsCell;
+}
+
+export function renderClienteDataForm(cliente) {
+  const clienteForm = document.querySelector("#cliente-form");
+
+  clienteForm.clienteId.value = cliente.id;
+  clienteForm.nome.value = cliente.nome;
+  clienteForm.email.value = cliente.email;
+  clienteForm.endereco.value = cliente.endereco;
 }

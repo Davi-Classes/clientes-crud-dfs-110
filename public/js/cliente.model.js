@@ -5,9 +5,31 @@ export async function buscarClientes() {
   return res.json();
 }
 
+export async function buscarClientePeloId(id) {
+  const res = await fetch(`${API_URL}/clientes/${id}`);
+
+  if (res.status == 404) {
+    return null;
+  }
+
+  return res.json();
+}
+
 export async function salvarCliente(cliente) {
   const res = await fetch(`${API_URL}/clientes`, {
     method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(cliente),
+  });
+
+  return res.json();
+}
+
+export async function editarCliente(id, cliente) {
+  const res = await fetch(`${API_URL}/clientes/${id}`, {
+    method: "PUT",
     headers: {
       "Content-Type": "application/json",
     },

@@ -21,6 +21,16 @@ app.get("/novo", async (_, res) => {
   res.sendFile(createPage);
 });
 
+app.get("/:id/editar", async (_, res) => {
+  const editPage = path.join(pages, "edit.html");
+  res.sendFile(editPage);
+});
+
+app.use((_, res, next) => {
+  const notFoundPage = path.join(pages, "not-found.html");
+  res.status(404).sendFile(notFoundPage);
+});
+
 app.listen(8080, "0.0.0.0", () =>
   console.log("Server is running at http://localhost:8080/"),
 );

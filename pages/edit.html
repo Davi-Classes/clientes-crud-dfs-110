@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clientes - Editar</title>
+
+    <link rel="stylesheet" href="/public/css/global.css" />
+    <link rel="stylesheet" href="/public/css/create.css" />
+  </head>
+  <body class="create-page">
+    <div class="create-card">
+      <!-- Cabeçalho do card -->
+      <div class="create-card__header">
+        <a href="/" class="create-card__back">Voltar</a>
+        <h1 class="create-card__title">Editar Cliente</h1>
+        <p class="create-card__description">
+          Altere os dados abaixo para editar o cliente selecionado.
+        </p>
+      </div>
+
+      <!-- Formulário -->
+      <div class="create-card__body">
+        <form id="cliente-form">
+          <input type="hidden" id="clienteId" name="clienteId">
+
+          <div class="form-group">
+            <label class="form-label" for="nome">Nome</label>
+            <input
+              class="form-input"
+              type="text"
+              name="nome"
+              id="nome"
+              placeholder="Ex: João da Silva"
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="email">Email</label>
+            <input
+              class="form-input"
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Ex: joao@email.com"
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="endereco">Endereço</label>
+            <input
+              class="form-input"
+              type="text"
+              name="endereco"
+              id="endereco"
+              placeholder="Ex: Rua das Flores, 123"
+            />
+          </div>
+
+          <div class="form-actions">
+            <a href="/">
+              <button class="btn btn-secondary" type="button">Cancelar</button>
+            </a>
+            <button class="btn btn-primary" type="submit">Salvar</button>
+          </div>
+        </form>
+
+        <p id="mensagem"></p>
+      </div>
+    </div>
+
+    <script type="module" src="/public/scripts/edit.js"></script>
+  </body>
+</html>

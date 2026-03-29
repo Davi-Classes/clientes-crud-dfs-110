@@ -161,7 +161,11 @@
 .clientes-table tbody td.td-actions {
   text-align: right;
   white-space: nowrap;
+  display: flex;
+  gap: var(--space-2);
 }
+
+
 
 /* --- Skeleton loader (estado de carregamento) --- */
 .skeleton {

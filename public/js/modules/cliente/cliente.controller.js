@@ -6,7 +6,9 @@ import {
   excluirCliente,
   salvarCliente,
 } from "./cliente.model.js";
-import { redirectTo } from "./utils.js";
+import { redirectTo } from "../../utils.js";
+import { renderToast } from "../toast/toast.view.js";
+import { addToast } from "../toast/toast.model.js";
 
 export async function handleListarClientes() {
   const clientes = await buscarClientes();
@@ -37,24 +39,23 @@ export async function handleCadastrarCliente(event) {
   };
 
   if (cliente.nome === "") {
-    // mostrarMensagem("O campo nome é obrigatório.", "error");
+    renderToast("O campo nome é obrigatório.", "error");
     return;
   }
 
   if (cliente.email === "") {
-    // mostrarMensagem("O campo email é obrigatório.", "error");
+    renderToast("O campo email é obrigatório.", "error");
     return;
   }
 
   if (cliente.endereco === "") {
-    // mostrarMensagem("O campo endereco é obrigatório.", "error");
+    renderToast("O campo endereco é obrigatório.", "error");
     return;
   }
 
   const message = await salvarCliente(cliente);
-  // mostrarMensagem(message.detail, "success");
 
-  clienteForm.reset();
+  addToast(message.detail, "success");
   redirectTo("/");
 }
 
@@ -71,24 +72,23 @@ export async function handleEditarCliente(event) {
   };
 
   if (cliente.nome === "") {
-    // mostrarMensagem("O campo nome é obrigatório.", "error");
+    renderToast("O campo nome é obrigatório.", "error");
     return;
   }
 
   if (cliente.email === "") {
-    // mostrarMensagem("O campo email é obrigatório.", "error");
+    renderToast("O campo email é obrigatório.", "error");
     return;
   }
 
   if (cliente.endereco === "") {
-    // mostrarMensagem("O campo endereco é obrigatório.", "error");
+    renderToast("O campo endereco é obrigatório.", "error");
     return;
   }
 
   const message = await editarCliente(clienteId, cliente);
-  // mostrarMensagem(message.detail, "success");
 
-  clienteForm.reset();
+  addToast(message.detail, "success");
   redirectTo("/");
 }
 

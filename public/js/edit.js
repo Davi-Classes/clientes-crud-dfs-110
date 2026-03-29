@@ -1,7 +1,7 @@
 import {
   handleDetalharClienteEdicao,
   handleEditarCliente,
-} from "../js/cliente.controller.js";
+} from "./modules/cliente/cliente.controller.js";
 
 const clienteForm = document.querySelector("#cliente-form");
 clienteForm.addEventListener("submit", handleEditarCliente);

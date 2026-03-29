@@ -1,0 +1,195 @@
+/* ============================================================
+   index.css — Página de listagem de clientes
+   Depende de: global.css
+   ============================================================ */
+
+/* --- Layout da página --- */
+.index-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  min-height: 100vh;
+
+  background-color: var(--color-background);
+}
+
+/* --- Hero / Cabeçalho da seção --- */
+.index-hero {
+  padding-block: var(--space-12) var(--space-10);
+  border-bottom: 1px solid var(--color-border);
+  animation: fadeInUp var(--duration-slow) var(--ease-out) both;
+}
+
+.index-hero .container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+}
+
+.index-hero__title {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-tight);
+  color: var(--color-text-primary);
+}
+
+.index-hero__subtitle {
+  margin-top: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+
+/* --- Área da tabela --- */
+.index-content {
+  padding-block: var(--space-10);
+  animation: fadeInUp var(--duration-slow) var(--ease-out) var(--duration-fast) both;
+}
+
+/* --- Estado vazio --- */
+.empty-state {
+  text-align: center;
+  padding-block: var(--space-20);
+  color: var(--color-text-secondary);
+}
+
+.empty-state__icon {
+  font-size: 2.5rem;
+  margin-bottom: var(--space-4);
+  opacity: 0.35;
+}
+
+.empty-state__title {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-2);
+}
+
+.empty-state__description {
+  font-size: var(--text-sm);
+  color: var(--color-text-disabled);
+}
+
+/* --- Tabela --- */
+.table-wrapper {
+  overflow-x: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-xs);
+}
+
+#clientes-table,
+.clientes-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+}
+
+/* Cabeçalho */
+#clientes-table thead tr,
+.clientes-table thead tr {
+  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-surface-alt);
+}
+
+#clientes-table thead th,
+.clientes-table thead th {
+  padding: var(--space-3) var(--space-6);
+  text-align: left;
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+#clientes-table thead th:first-child,
+.clientes-table thead th:first-child {
+  border-radius: var(--radius-md) 0 0 0;
+}
+
+#clientes-table thead th:last-child,
+.clientes-table thead th:last-child {
+  border-radius: 0 var(--radius-md) 0 0;
+}
+
+/* Corpo */
+#clientes-table tbody tr,
+.clientes-table tbody tr {
+  border-bottom: 1px solid var(--color-border);
+  transition: background-color var(--duration-fast) var(--ease-out);
+}
+
+#clientes-table tbody tr:last-child,
+.clientes-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+#clientes-table tbody tr:hover,
+.clientes-table tbody tr:hover {
+  background-color: var(--color-surface-alt);
+}
+
+#clientes-table tbody td,
+.clientes-table tbody td {
+  padding: var(--space-4) var(--space-6);
+  color: var(--color-text-primary);
+  vertical-align: middle;
+}
+
+/* Coluna de nome destacada */
+#clientes-table tbody td:first-child,
+.clientes-table tbody td:first-child {
+  font-weight: var(--weight-medium);
+}
+
+/* Coluna de email */
+#clientes-table tbody td:nth-child(2),
+.clientes-table tbody td:nth-child(2) {
+  color: var(--color-text-secondary);
+}
+
+/* Coluna de ações (se houver) */
+#clientes-table tbody td.td-actions,
+.clientes-table tbody td.td-actions {
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* --- Skeleton loader (estado de carregamento) --- */
+.skeleton {
+  background: linear-gradient(90deg,
+      var(--color-surface-alt) 25%,
+      var(--color-border) 50%,
+      var(--color-surface-alt) 75%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.4s ease-in-out infinite;
+  border-radius: var(--radius-sm);
+}
+
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.skeleton-row td {
+  padding: var(--space-4) var(--space-6);
+}
+
+.skeleton-cell {
+  height: 14px;
+  border-radius: var(--radius-sm);
+  display: inline-block;
+}

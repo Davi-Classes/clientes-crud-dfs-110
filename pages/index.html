@@ -5,25 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Clientes</title>
 
-    <link rel="stylesheet" href="/public/css/style.css" />
+    <link rel="stylesheet" href="/public/css/global.css" />
+    <link rel="stylesheet" href="/public/css/index.css" />
   </head>
-  <body>
-    <h1>Clientes</h1>
 
-    <a href="/novo">
-      <button>Cadastrar</button>
-    </a>
+  <body class="index-page">
+    <!-- Hero -->
+    <section class="index-hero">
+      <div class="container">
+        <div>
+          <p class="index-hero__subtitle">Gerenciamento</p>
+          <h1 class="index-hero__title">Clientes</h1>
+        </div>
 
-    <table id="clientes-table">
-      <thead>
-        <tr>
-          <th>Nome</th>
-          <th>Email</th>
-          <th>Endereço</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
+        <a href="/novo">
+          <button class="btn btn-primary">+ Cadastrar</button>
+        </a>
+      </div>
+    </section>
+
+    <!-- Conteúdo -->
+    <main class="index-content">
+      <div class="container">
+        <div class="table-wrapper">
+          <table id="clientes-table">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Endereço</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </main>
 
     <script type="module" src="./public/scripts/index.js"></script>
   </body>

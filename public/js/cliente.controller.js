@@ -1,10 +1,27 @@
 import { renderClientesTable } from "./cliente.view.js";
-import { buscarClientes, salvarCliente } from "./cliente.model.js";
+import {
+  buscarClientes,
+  excluirCliente,
+  salvarCliente,
+} from "./cliente.model.js";
 import { redirectTo } from "./utils.js";
 
 export async function handleListarClientes() {
   const clientes = await buscarClientes();
-  renderClientesTable(clientes);
+  renderClientesTable(clientes, handleExcluirCliente);
+}
+
+async function handleExcluirCliente(cliente) {
+  const confirmacao = confirm(
+    `Deseja realmente excluir o cliente ${cliente.nome}?`,
+  );
+
+  if (!confirmacao) {
+    return false;
+  }
+
+  await excluirCliente(cliente.id);
+  return true;
 }
 
 export async function handleCadastrarCliente(event) {

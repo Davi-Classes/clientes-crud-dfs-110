@@ -16,3 +16,11 @@ export async function salvarCliente(cliente) {
 
   return res.json();
 }
+
+export async function excluirCliente(id) {
+  const res = await fetch(`${API_URL}/clientes/${id}`, {
+    method: "DELETE",
+  });
+
+  return res.json();
+}
